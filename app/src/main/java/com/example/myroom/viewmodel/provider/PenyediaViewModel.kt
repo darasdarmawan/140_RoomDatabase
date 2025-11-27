@@ -1,6 +1,6 @@
 package com.example.myroom.viewmodel.provider
 
-import androidx.app.Aplication
+import android.app.Application
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
