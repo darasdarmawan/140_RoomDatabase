@@ -24,6 +24,7 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
             UIStateSiswa(detailSiswa = detailSiswa, isEntryValid =
             validasiInput(detailSiswa))
     }
+    /* Fungsi untuk menyimpan data yang di-entry */
     suspend fun saveSiswa() {
         if (validasiInput()) {
             repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
@@ -31,6 +32,10 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
     }
 
 }
+
+/**
+ * Mewakili Status Ui untuk Siswa.
+ */
 
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
@@ -43,6 +48,8 @@ data class DetailSiswa(
     val telpon: String = "",
 )
 
+/* Fungsi untuk mengkonversi data input ke data dalam tabel sesuai jenis
+    datanya*/
 fun DetailSiswa.toSiswa(): Siswa = Siswa(
     id = id,
     nama = nama,
