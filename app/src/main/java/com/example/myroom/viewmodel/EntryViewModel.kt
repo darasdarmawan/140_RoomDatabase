@@ -1,6 +1,26 @@
 package com.example.myroom.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.ViewModel
+import com.example.myroom.repositori.RepositoriSiswa
 import com.example.myroom.room.Siswa
+
+class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel(){
+    /**
+     * Berisi status Siswa saat ini
+     */
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+        private set
+    /* Fungsi untuk memvalidasi input */
+    private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa): Boolean {
+        return with(uiState){
+            nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+        }
+    }
+
+
+}
+
 data class DetailSiswa(
     val id: Int = 0,
     val nama: String = "",
