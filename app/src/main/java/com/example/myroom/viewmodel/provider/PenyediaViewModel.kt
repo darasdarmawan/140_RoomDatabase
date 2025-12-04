@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.myroom.repositori.AplikasiSiswa
 import com.example.myroom.viewmodel.DetailViewModel
+import com.example.myroom.viewmodel.EditViewModel
 import com.example.myroom.viewmodel.EntryViewModel
 import com.example.myroom.viewmodel.HomeViewModel
 
@@ -17,13 +18,17 @@ object PenyediaViewModel{
         initializer {
             HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
+        initializer {
+            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
+        }
 
         initializer {
             DetailViewModel(this.createSavedStateHandle(),
                 aplikasiSiswa().container.repositoriSiswa)
         }
         initializer {
-            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
+            EditViewModel(this.createSavedStateHandle(),
+                aplikasiSiswa().container.repositoriSiswa)
         }
     }
 }
